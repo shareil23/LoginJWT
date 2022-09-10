@@ -1,6 +1,6 @@
-# JULO Code Test
+# Mercari Code Test
 
-JULO Mini Wallet Exercise.
+Mercari Auth Exercise.
 
 ## Stack
 |||
@@ -31,15 +31,12 @@ JULO Mini Wallet Exercise.
     ├── Static
     ├── Templates
     ├── Test
+    ├── InBound
+    ├── OutBound
     ├── __init__.py
 
 ```
 
 # How To Run The Services
 
-After done clone this repository, make sure docker has installed on the computer, port `8000` and port `7000`
- not used or can change in `docker-compose.yml` file, then execute this command on the shell
-`docker-compose up --build` , after that make a new tab in a shell then execute this command to migrate
-the database models `docker exec -it julo_mini_wallet_servcies  bash ./migration.sh first`.
-Happy testing the services, after done testing the services press <kbd>Ctrl</kbd> + <kbd>C</kbd> to stop the
-services. After that execute the last command `docker-compose down --rmi local -v` to clean up the container.
+TBD
