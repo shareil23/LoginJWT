@@ -19,6 +19,7 @@ class UserLogoutAPI(Resource):
             revoked_token_data        = {"jti": get_token}
             revoked_token_insert_data = RevokedToken(**revoked_token_data)
             db.session.add(revoked_token_insert_data)
+            db.session.commit()
             db.session.flush()
             
             # data for user log
@@ -30,6 +31,7 @@ class UserLogoutAPI(Resource):
             # insert user log data to database
             user_log_insert_data = UserLog(**user_log_data)
             db.session.add(user_log_insert_data)
+            db.session.commit()
             db.session.flush()
             
             datas = {

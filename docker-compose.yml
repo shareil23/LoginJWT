@@ -33,7 +33,7 @@ services:
       && flask db init
       && flask db migrate
       && flask db upgrade
-      && /usr/local/bin/gunicorn --bind=0.0.0.0:5000 -w 3 --worker-class="egg:meinheld#gunicorn_worker" app:app --timeout 600"
+      && /usr/local/bin/gunicorn --bind=0.0.0.0:5000 -w 3 --worker-class="egg:meinheld#gunicorn_worker" app:app --timeout 600 --capture-output --log-level debug"
 
   mercari_postgres_auth_servcies:
     container_name: "mercari_postgres_auth_servcies"

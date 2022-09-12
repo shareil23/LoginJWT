@@ -39,9 +39,11 @@ class UserAuthAPI(Resource):
             # get user data
             user_schema_list = UserSchemaList(many=True)
             output_user_data = user_schema_list.dump(query.all())
+
+            # get the hash
             
             # check the password is equal to hash
-            if bcrypt.check_password_hash(output_user_data[0]['hash_val'], output_user_data[0]['user_xid'] + body['password']):
+            if not bcrypt.check_password_hash(output_user_data[0]['hash_val'], output_user_data[0]['user_xid'] + body['password']):
                 datas = {
                     "status": "error",
                     "data": None,
@@ -59,6 +61,7 @@ class UserAuthAPI(Resource):
             # insert user log data to database
             user_log_insert_data = UserLog(**user_log_data)
             db.session.add(user_log_insert_data)
+            db.session.commit()
             db.session.flush()
             
             datas = {

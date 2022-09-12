@@ -52,5 +52,15 @@ docker-compose down --rmi local -v
 # How To Run The Unitest
 
 ```bash
-pytest ./src --disable-pytest-warnings
+TBD
 ```
+
+# Tech DEBT
+- Add unit test
+- Fix some error handling issue
+- Fix the structure to repository model so no need to duplicate I/O type calling, and sepearate between business and tech logic
+- Move from SQL to NoSQL to improve the performance
+- Handling GRPC for every services that need check the authorization
+- Separate env file for Dev, Staging, and Production
+- Handling importing file using full path to avoid error
+- Add caching mechanism for checking the token duration

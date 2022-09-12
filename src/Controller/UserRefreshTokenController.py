@@ -20,6 +20,7 @@ class UserTokenRefreshAPI(Resource):
         # insert user log data to database
         user_log_insert_data = UserLog(**user_log_data)
         db.session.add(user_log_insert_data)
+        db.session.commit()
         db.session.flush()
         
         datas = {
@@ -27,7 +28,7 @@ class UserTokenRefreshAPI(Resource):
             "data": {
                 "token": create_access_token(identity=get_user)
             },
-            "message": "Success Logged in"
+            "message": "Success token refreshed"
         }
 
         return datas, 200

@@ -21,10 +21,20 @@ def deleteCache(id):
 
 # Revoked token
 @jwt.token_in_blocklist_loader
-def check_if_token_in_blacklist(decrypted_token):
+def check_if_token_in_blacklist(jwt_header, jwt_payload):
     # get jti token
-    jti = decrypted_token['jti']
+    jti = jwt_payload['jti']
     
     # query revoked token are exists
     query = RevokedToken.query.filter(RevokedToken.jti == jti).scalar()
     return query is not None
+
+@jwt.unauthorized_loader
+def unauthorized_callback(callback):
+    datas = {
+        "status": "error",
+        "data": None,
+        "message": "Unauthorize access"
+    }
+
+    return datas, 200

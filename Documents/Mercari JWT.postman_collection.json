@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "4ce36837-02a7-4e1b-90d2-5b723f718812",
+		"_postman_id": "45ddfe61-70f7-4694-9628-aec2adf2ab4a",
 		"name": "Mercari JWT",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "3628790"
+		"_exporter_id": "21444730"
 	},
 	"item": [
 		{
@@ -456,6 +456,537 @@
 					],
 					"cookie": [],
 					"body": "{\n    \"status\": \"error\",\n    \"data\": null,\n    \"message\": \"Please check username or password is wrong.\"\n}"
+				},
+				{
+					"name": "Response Success Login",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "test@testing.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "test",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/user/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.23.1"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 12 Sep 2022 04:34:09 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "519"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "br"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"success\",\n    \"data\": {\n        \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6dHJ1ZSwiaWF0IjoxNjYyOTU3MjQ5LCJqdGkiOiIxYmE1Zjg0OC1lNzZlLTQ2YTItYTA1Yy1jZGRmOGU5MjE4NTQiLCJ0eXBlIjoiYWNjZXNzIiwic3ViIjoiNmZmMmMyYTItYjM5OC00ZDljLWFjYjItMWMwY2QyNjkyNDU1IiwibmJmIjoxNjYyOTU3MjQ5LCJleHAiOjE2NjI5NjA4NDl9.Lygc_3xB_nF19DqS_dVYtqtQhIDDCjHGlPEGLIi94jU\",\n        \"refesh_token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY2Mjk1NzI0OSwianRpIjoiY2UyMmJhNjEtMzhmNC00YzU1LThmYmItOTQwNzE5NzdlZDQwIiwidHlwZSI6InJlZnJlc2giLCJzdWIiOiI2ZmYyYzJhMi1iMzk4LTRkOWMtYWNiMi0xYzBjZDI2OTI0NTUiLCJuYmYiOjE2NjI5NTcyNDksImV4cCI6MTY2NTU0OTI0OX0.a0c0xDFsxoYuXnewaqX0_L0I8x5IzQZHphGRajlappA\"\n    },\n    \"message\": \"Success Logged in\"\n}"
+				},
+				{
+					"name": "Response Handling SQL Injection",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "test@testing.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "\" or \"\"=\"",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/user/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"login"
+							]
+						}
+					},
+					"status": "BAD REQUEST",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.23.1"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 12 Sep 2022 04:38:34 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "92"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"error\",\n    \"data\": null,\n    \"message\": \"Please check username or password is wrong.\"\n}"
+				}
+			]
+		},
+		{
+			"name": "History Default Data",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6dHJ1ZSwiaWF0IjoxNjYyOTYxMDM0LCJqdGkiOiJjMzY4ZDY3Zi1kZTRhLTRhYjQtYjM1YS1hNmEwMjQyMDQ4YTAiLCJ0eXBlIjoiYWNjZXNzIiwic3ViIjoiNjMxOGJlMDktMzM2Ni00OTFjLWE5MGQtNjlmMjNhMTMzOWJjIiwibmJmIjoxNjYyOTYxMDM0LCJleHAiOjE2NjI5NjQ2MzR9.mu8h6FQczLYyF7oXMBxrVt1CKDzxl7AD8Fgcd06OGo0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/v1/user/history",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"history"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Response Success Get History",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/user/history",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"history"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.23.1"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 12 Sep 2022 05:33:02 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "183"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": 200,\n    \"data\": [\n        {\n            \"id\": 1,\n            \"user_xid\": \"48da451a-23f4-40ae-a9b9-8bf3bab86386\",\n            \"action\": \"LOGIN\",\n            \"utime\": 1662960775\n        }\n    ],\n    \"message\": \"Success\",\n    \"totalPage\": 1,\n    \"totalData\": 2\n}"
+				}
+			]
+		},
+		{
+			"name": "History Default Data With Pagination",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6dHJ1ZSwiaWF0IjoxNjYyOTYxMDM0LCJqdGkiOiJjMzY4ZDY3Zi1kZTRhLTRhYjQtYjM1YS1hNmEwMjQyMDQ4YTAiLCJ0eXBlIjoiYWNjZXNzIiwic3ViIjoiNjMxOGJlMDktMzM2Ni00OTFjLWE5MGQtNjlmMjNhMTMzOWJjIiwibmJmIjoxNjYyOTYxMDM0LCJleHAiOjE2NjI5NjQ2MzR9.mu8h6FQczLYyF7oXMBxrVt1CKDzxl7AD8Fgcd06OGo0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/v1/user/history/2/10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"history",
+						"2",
+						"10"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Response Success Get History",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/user/history",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"history"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.23.1"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 12 Sep 2022 05:33:02 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "183"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": 200,\n    \"data\": [\n        {\n            \"id\": 1,\n            \"user_xid\": \"48da451a-23f4-40ae-a9b9-8bf3bab86386\",\n            \"action\": \"LOGIN\",\n            \"utime\": 1662960775\n        }\n    ],\n    \"message\": \"Success\",\n    \"totalPage\": 1,\n    \"totalData\": 2\n}"
+				},
+				{
+					"name": "Response Success Get History With Pagination",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/user/history/1/10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"history",
+								"1",
+								"10"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.23.1"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 12 Sep 2022 05:39:43 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "294"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": 200,\n    \"data\": [\n        {\n            \"utime\": 1662961151,\n            \"id\": 2,\n            \"action\": \"CHECK HISTORY\",\n            \"user_xid\": \"6318be09-3366-491c-a90d-69f23a1339bc\"\n        },\n        {\n            \"utime\": 1662961034,\n            \"id\": 1,\n            \"action\": \"LOGIN\",\n            \"user_xid\": \"6318be09-3366-491c-a90d-69f23a1339bc\"\n        }\n    ],\n    \"message\": \"Success\",\n    \"totalPage\": 1,\n    \"totalData\": 3\n}"
+				},
+				{
+					"name": "Response History Data Out Of Page",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/user/history/2/10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"history",
+								"2",
+								"10"
+							]
+						}
+					},
+					"status": "BAD REQUEST",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.23.1"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 12 Sep 2022 05:41:14 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "106"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": 400,\n    \"data\": null,\n    \"message\": \"No favorite coupon yet.\",\n    \"totalPage\": null,\n    \"totalData\": null\n}"
+				}
+			]
+		},
+		{
+			"name": "Refesh Token",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY2Mjk2MTAzNCwianRpIjoiODc3NDBjMzYtYWM2Zi00OWVmLTgzM2QtZmM2ZTBmZDIxMTRjIiwidHlwZSI6InJlZnJlc2giLCJzdWIiOiI2MzE4YmUwOS0zMzY2LTQ5MWMtYTkwZC02OWYyM2ExMzM5YmMiLCJuYmYiOjE2NjI5NjEwMzQsImV4cCI6MTY2NTU1MzAzNH0.BO0-zsxX4fBgMnJUpJ5zhkK3KadHAj5srSstsPDlyL4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/v1/user/refresh",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"refresh"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Response Success Refresh Token",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/user/refresh",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"refresh"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.23.1"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 12 Sep 2022 05:43:28 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "388"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"success\",\n    \"data\": {\n        \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY2Mjk2MTQwOCwianRpIjoiYjQ0NDIzMTUtNWMxNS00YzQ2LWJmY2EtZmM2NzI3YzVjMjM5IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjYzMThiZTA5LTMzNjYtNDkxYy1hOTBkLTY5ZjIzYTEzMzliYyIsIm5iZiI6MTY2Mjk2MTQwOCwiZXhwIjoxNjYyOTY1MDA4fQ.XT7pzzBb2bCpMYh3Gk4R-73VAVku208gOR42bd4njGg\"\n    },\n    \"message\": \"Success Logged in\"\n}"
 				}
 			]
 		}

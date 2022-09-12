@@ -1,6 +1,7 @@
 from flask_restful import Resource
 from flask import request
 import uuid
+import logging
 
 from ..Config import db, bcrypt
 from ..Models import User
@@ -47,17 +48,18 @@ class UserRegisterAPI(Resource):
                     "message": "Try again later."
                 }
 
-                return datas, 400 
+                return datas, 400
             
             # init user_xid
             body['user_xid'] = str(uuid.uuid4())
             
             # init hash_val
-            body['hash_val'] = bcrypt.generate_password_hash(body['user_xid'] + body['password'])
+            body['hash_val'] = bcrypt.generate_password_hash(body['user_xid'] + body['password']).decode("utf-8")
             
             # insert user data to database
             user_insert_data = User(**body)
             db.session.add(user_insert_data)
+            db.session.commit()
             db.session.flush()
             
             datas = {
