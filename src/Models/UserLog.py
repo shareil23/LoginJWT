@@ -4,7 +4,7 @@ import time
 from sqlalchemy.dialects.postgresql import UUID
 import uuid
 
-class User(db.Model):
+class UserLog(db.Model):
     __tablename__ = 'user_log'
 
     id       = db.Column(db.BigInteger(), primary_key=True, autoincrement=True)

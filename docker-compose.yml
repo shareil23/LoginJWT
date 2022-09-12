@@ -6,30 +6,33 @@ version: '3'
 
 volumes:
   auth_services_data: {}
+  code_src_data: {}
 
 networks:
-  atuh_services-net:
+  auth_services-net:
       external: false
 
 services:
-  mercari_atuh_servcies:
-    container_name: "mercari_atuh_servcies"
+  mercari_auth_servcies:
+    container_name: "mercari_auth_servcies"
     build:
       context: .
       dockerfile: ./src/Config/Dockerfile
     restart: on-failure
     networks:
-      - atuh_services-net
+      - auth_services-net
     volumes:
-      - .:/service/
+      - code_src_data:/service/
     depends_on:
       - mercari_postgres_auth_servcies
 #    deploy:
 #      replicas: 0
 #      mode: replicated
     command: bash -c
-      "./wait-posgres.sh
-      && ./migration.sh first
+      "./wait-postgres.sh
+      && flask db init
+      && flask db migrate
+      && flask db upgrade
       && /usr/local/bin/gunicorn --bind=0.0.0.0:5000 -w 3 --worker-class="egg:meinheld#gunicorn_worker" app:app --timeout 600"
 
   mercari_postgres_auth_servcies:
@@ -40,7 +43,7 @@ services:
     ports:
       - '7000:5432'
     networks:
-      - atuh_services-net
+      - auth_services-net
     volumes:
       - auth_services_data:/var/lib/postgresql/data
   
@@ -50,9 +53,9 @@ services:
     volumes:
       - ./src/Config/nginx.conf:/etc/nginx/nginx.conf:ro
     networks:
-      - atuh_services-net
+      - auth_services-net
     depends_on:
-      - mercari_atuh_servcies
+      - mercari_auth_servcies
     ports:
       - '8000:5000'
     restart: always
@@ -62,4 +65,4 @@ services:
     image: redis:alpine
     restart: on-failure
     networks:
-      - atuh_services-net
+      - auth_services-net

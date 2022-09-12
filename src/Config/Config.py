@@ -8,12 +8,14 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 from flask_bcrypt import Bcrypt
 from flask_jwt_extended import JWTManager
+from flask_migrate import Migrate
 
 Compress(app)
-api    = Api(app)
-cors   = CORS(app)
-caches = Cache(app)
-db     = SQLAlchemy(app)
-ma     = Marshmallow(app)
-bcrypt = Bcrypt(app)
-jwt    = JWTManager(app)
+api     = Api(app)
+cors    = CORS(app)
+caches  = Cache(app)
+db      = SQLAlchemy(app)
+ma      = Marshmallow(app)
+bcrypt  = Bcrypt(app)
+jwt     = JWTManager(app)
+migrate = Migrate(app, db)

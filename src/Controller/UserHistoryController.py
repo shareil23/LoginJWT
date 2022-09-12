@@ -7,7 +7,7 @@ from ..Schema import UserLogSchemaList
 
 
 class UserHistoryAPI(Resource):
-    @jwt_required
+    @jwt_required()
     def get(self, page=1, totalData=10):
         # get user_xid data from refresh token
         get_user = get_jwt_identity()

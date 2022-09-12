@@ -41,7 +41,7 @@ class UserAuthAPI(Resource):
             output_user_data = user_schema_list.dump(query.all())
             
             # check the password is equal to hash
-            if not bcrypt.check_password_hash(output_user_data[0]['hash_val'], output_user_data[0]['user_xid'] + body['password']):
+            if bcrypt.check_password_hash(output_user_data[0]['hash_val'], output_user_data[0]['user_xid'] + body['password']):
                 datas = {
                     "status": "error",
                     "data": None,

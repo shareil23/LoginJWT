@@ -24,7 +24,7 @@ class UserRegisterAPI(Resource):
         
         if all(key in body for key in validate_string):
             # check the password equal
-            if body['passowrd'] != body['retry_password']:
+            if body['password'] != body['retry_password']:
                 datas = {
                     "status": "error",
                     "data": None,

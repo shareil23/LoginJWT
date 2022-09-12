@@ -1,29 +1,18 @@
 from flask_restful import Resource
-from flask_jwt_extended import get_raw_jwt, jwt_required, get_jwt_identity
+from flask_jwt_extended import get_jwt, jwt_required, get_jwt_identity
 
 from ..Config import db, jwt
 from ..Models import UserLog, RevokedToken
 
 
-# Revoked token
-@jwt.token_in_blacklist_loader
-def check_if_token_in_blacklist(decrypted_token):
-    # get jti token
-    jti = decrypted_token['jti']
-    
-    # query revoked token are exists
-    query = RevokedToken.query.filter(RevokedToken.jti == jti).count()
-    return True if len(query) != 0 else False
-
-
 class UserLogoutAPI(Resource):
-    @jwt_required
+    @jwt_required()
     def get(self):
         # get user_xid data from token
         get_user = get_jwt_identity()
         
         # get jti data from token
-        get_token = get_raw_jwt()['jti']
+        get_token = get_jwt()['jti']
         
         try:
             # revoke access

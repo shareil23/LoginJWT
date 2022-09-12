@@ -39,4 +39,18 @@ Mercari Auth Exercise.
 
 # How To Run The Services
 
-TBD
+```bash
+docker-compose up
+```
+
+# How To Destroy The Services
+
+```bash
+docker-compose down --rmi local -v
+```
+
+# How To Run The Unitest
+
+```bash
+pytest ./src --disable-pytest-warnings
+```

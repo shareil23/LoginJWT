@@ -1,5 +1,7 @@
 #!/bin/sh
 
+chmod u+x wait-postgres.sh
+
 while ! nc -z mercari_postgres_auth_servcies 5432; do
     echo "Postgres is unavailable - sleeping"
     sleep 3;

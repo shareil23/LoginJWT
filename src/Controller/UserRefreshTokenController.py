@@ -1,13 +1,12 @@
 from flask_restful import Resource
-from flask import request
-from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_refresh_token_required
+from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
 
 from ..Config import db
 from ..Models import UserLog
 
 
 class UserTokenRefreshAPI(Resource):
-    @jwt_refresh_token_required
+    @jwt_required(refresh=True)
     def post(self):
         # get user_xid data from refresh token
         get_user = get_jwt_identity()
