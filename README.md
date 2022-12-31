@@ -1,6 +1,6 @@
 # Mercari Code Test
 
-Mercari Auth Exercise.
+Mercari Auth Exercise Code.
 
 ## Stack
 |||
